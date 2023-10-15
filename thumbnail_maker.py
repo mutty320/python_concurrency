@@ -19,25 +19,28 @@ class ThumbnailMakerService(object):
         self.output_dir = self.home_dir + os.path.sep + 'outgoing'
         self.downloaded_bytes = 0 
         self.dl_lock = threading.Lock()
+        max_concurrent_dl = 4
+        self.dl_sem = threading.Semaphore(max_concurrent_dl)
     # working function for the threads
     def download_image(self, url):
 
         # download each image and save to the input dir 
-        logging.info("downloading image at URL " + url)
-        img_filename = urlparse(url).path.split('/')[-1]
-        dest_path = self.input_dir + os.path.sep + img_filename
-        urlretrieve(url, dest_path)
-        img_size = os.path.getsize(dest_path)
-        # here we use a sharde recource the downloaded_bytes so if a thread 
-        # its inpotant to understant that the += operation is three operations that are not atomic 
-        # for the python interpeter as it first reads the value of downloaded_bytes 
-        # and then the value of img_size and then stores the sum in downloaded_bytes
-        # so between these operations if there is a contaxt switch then the updaded 
-        # value might be curuppted thus we must use syncrynezation tules such as locks
-        with self.dl_lock:
-            self.downloaded_bytes += img_size
-        logging.info("image [{} bytes] saved to {}".format(img_size, dest_path))
-
+        with self.dl_sem:
+            logging.info("downloading image at URL " + url)
+            img_filename = urlparse(url).path.split('/')[-1]
+            dest_path = self.input_dir + os.path.sep + img_filename
+            urlretrieve(url, dest_path)
+            img_size = os.path.getsize(dest_path)
+            # The downloaded_bytes is a sharde recource 
+            # its important to understant that the += operation is three operations that are not atomic 
+            # in the python interpeter as it first reads the value of downloaded_bytes 
+            # then the value of img_size and then stores the sum in downloaded_bytes
+            # so between these operations if there is a contaxt switch then the updaded 
+            # value might be curuppted thus we must use syncrynezation tules such as locks
+            with self.dl_lock:
+                self.downloaded_bytes += img_size
+            logging.info("image [{} bytes] saved to {}".format(img_size, dest_path))
+    
     def download_images(self, img_url_list):
         # validate inputs
         if not img_url_list:
