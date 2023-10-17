@@ -1,4 +1,4 @@
-# Python Concurrency
+#Python Concurrency
 
 Welcome to Python Concurrency!
 
@@ -16,13 +16,19 @@ I've also explored asynchronous programming to eliminate GIL-related issues.
 
 ## Project Overview
 
-Create a Python program combining I/O and CPU tasks.
+Combine I/O and CPU tasks for an enhanced concurrency experience.
 
-Take an incremental approach, starting single-threaded, and refactoring for parallelism.
+- v1: Initial program structure.
+- v2: Multithreading enhances download speed.
+- v3: Synchronization tools introduced.
+- v4: Semaphore usage for controlled downloads.
+- v5: Multiprocessing for image resizing, better performance.
+- v6: Multithreading for downloads, multiprocessing for resizing.
+- v7: Utilize IPC and manual process management with multiprocessing queues.
 
 ## Version History
 
-Document progress using Git tags, offering an organized project evolution history.
+Documented with Git tags, offering an organized history of project evolution.
 
 ## Project Repository
 
