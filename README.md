@@ -6,23 +6,24 @@ Welcome to Python Concurrency!
 
 Explore Python concurrency in two approaches:
 
-1. **Multithreading**: Ideal for I/O-bound tasks, enforces concurrent execution.
+1. **Multithreading**: Ideal for I/O-bound tasks, enabling concurrent execution.
 
 2. **Multiprocessing**: Best for CPU-bound tasks, enables true parallelism.
 
-Both need synchronization tools to prevent race conditions.
+Both approaches utilize synchronization tools to prevent race conditions. 
+In this project, I've implemented Locks and Semaphores for multithreading, 
+and state sharing for multiprocessing.
 
 I've also explored asynchronous programming to eliminate GIL-related issues.
 
 ## Project Overview
-
-Combine I/O and CPU tasks for an enhanced concurrency experience.
+Combine I/O and CPU tasks for enhanced concurrency.
 
 - v1: Initial program structure.
 - v2: Multithreading enhances download speed.
-- v3: Synchronization tools introduced.
-- v4: Semaphore usage for controlled downloads.
-- v5: Multiprocessing for image resizing, better performance.
+- v3: Introduce synchronization tools (e.g., Locks, Semaphores).
+- v4: Demonstrate semaphore usage for controlled downloads.
+- v5: Multiprocessing for image resizing, improved performance.
 - v6: Multithreading for downloads, multiprocessing for resizing.
 - v7: Utilize IPC and manual process management with multiprocessing queues.
 
