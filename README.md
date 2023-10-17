@@ -10,8 +10,8 @@ Explore Python concurrency in two approaches:
 
 2. **Multiprocessing**: Best for CPU-bound tasks, enables true parallelism.
 
-Both approaches utilize synchronization tools to prevent race conditions. 
-In this project, I've implemented Locks and Semaphores for multithreading, 
+Both approaches utilize synchronization tools to prevent race conditions.  
+In this project, I've implemented Locks and Semaphores for multithreading,  
 and state sharing for multiprocessing.
 
 I've also explored asynchronous programming to eliminate GIL-related issues.
