@@ -17,7 +17,10 @@ and state sharing for multiprocessing.
 I've also explored asynchronous programming to eliminate GIL-related issues.
 
 ## Project Overview
-Combine I/O and CPU tasks for enhanced concurrency.
+Combine I/O and CPU tasks to showcase different concurrency techniques and their benefits.
+
+- The I/O task is downloading images from a list of URLs.
+- The CPU task is to resize the images.
 
 - v1: Initial program structure.
 - v2: Multithreading enhances download speed.
